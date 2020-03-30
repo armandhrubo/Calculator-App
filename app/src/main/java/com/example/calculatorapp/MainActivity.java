@@ -15,13 +15,13 @@ public class MainActivity extends AppCompatActivity {
 
     Button button0, button1, button2, button3, button4, button5, button6,
             button7, button8, button9, buttonAdd, buttonSub, buttonDivision,
-            buttonMul, buttonPow, buttonPoint, buttonC, buttonEqual, buttonPercent;
+            buttonMul, buttonPow, buttonPoint, buttonC, buttonEqual;
     EditText calculatorEditText, opEditText;
 
     float FirstVal, SecondVal;
     double result;
 
-    boolean calcAddition, calcMinus, calcMultiplication, calcDivision, calcPow, calcPercent,  check = false;
+    boolean calcAddition, calcMinus, calcMultiplication, calcDivision, calcPow,  check = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
         buttonPow = (Button) findViewById(R.id.buttonPow);
         buttonDivision = (Button) findViewById(R.id.buttonDivision);
         buttonC = (Button) findViewById(R.id.buttonC);
-        buttonPercent = (Button) findViewById(R.id.buttonPercent);
         buttonEqual = (Button) findViewById(R.id.buttonEqual);
         calculatorEditText = (EditText) findViewById(R.id.result);
         opEditText = (EditText) findViewById(R.id.op);
@@ -126,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         button6.setOnClickListener(new View.OnClickListener() {
-           @SuppressLint("SetTextI18n")
+            @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View v) {
                 if (check) {
@@ -220,21 +219,6 @@ public class MainActivity extends AppCompatActivity {
                     calculatorEditText.setText(calculatorEditText.getText() + ".");
                 }
                 opEditText.setText("");
-            }
-        });
-
-        buttonPercent.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(calculatorEditText.getText().toString().equals("")){
-                    calculatorEditText.setText("");
-                }
-                else {
-                    FirstVal = Float.parseFloat(calculatorEditText.getText() + "");
-                    calcDivision = true;
-                    calculatorEditText.setText("");
-                    opEditText.setText("%");
-                }
             }
         });
 
@@ -343,12 +327,6 @@ public class MainActivity extends AppCompatActivity {
 
                 if (calcDivision) {
                     result = FirstVal / SecondVal;
-                    calculatorEditText.setText(format.format(result) + "");
-                    calcDivision = false;
-                }
-
-                if (calcPercent) {
-                    result = FirstVal % SecondVal;
                     calculatorEditText.setText(format.format(result) + "");
                     calcDivision = false;
                 }
