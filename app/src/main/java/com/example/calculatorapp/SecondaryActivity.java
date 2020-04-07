@@ -24,6 +24,7 @@ public class SecondaryActivity extends AppCompatActivity {
     EditText editText;
     TextView textView;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +47,7 @@ public class SecondaryActivity extends AppCompatActivity {
                 else {
                     firstValue = Float.parseFloat(editText.getText() + "");
                     firstValue = firstValue * 0.62137;
-                    textView.setText(firstValue + " Miles");
+                    textView.setText(String.format("%.2f", firstValue) + " Miles");
 
                 }
                 editText.onEditorAction(EditorInfo.IME_ACTION_DONE);
@@ -64,7 +65,7 @@ public class SecondaryActivity extends AppCompatActivity {
                 else {
                     firstValue = Float.parseFloat(editText.getText() + "");
                     firstValue = firstValue * 1.60934;
-                    textView.setText(firstValue + " Kilometer");
+                    textView.setText(String.format("%.2f", firstValue) + " Kilometer");
 
                 }
                 editText.onEditorAction(EditorInfo.IME_ACTION_DONE);
