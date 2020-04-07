@@ -3,6 +3,7 @@ package com.example.calculatorapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
     Button button0, button1, button2, button3, button4, button5, button6,
             button7, button8, button9, buttonAdd, buttonSub, buttonDivision,
-            buttonMul, buttonPow, buttonPoint, buttonC, buttonEqual;
+            buttonMul, buttonPow, buttonPoint, buttonC, buttonEqual, buttonConverter;
     EditText calculatorEditText, opEditText;
 
     float FirstVal, SecondVal;
@@ -46,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         buttonDivision = (Button) findViewById(R.id.buttonDivision);
         buttonC = (Button) findViewById(R.id.buttonC);
         buttonEqual = (Button) findViewById(R.id.buttonEqual);
+        buttonConverter = findViewById(R.id.buttonConverter);
         calculatorEditText = (EditText) findViewById(R.id.result);
         opEditText = (EditText) findViewById(R.id.op);
 
@@ -56,8 +58,7 @@ public class MainActivity extends AppCompatActivity {
                 if (check) {
                     calculatorEditText.setText("1");
                     check = false;
-                }
-                else {
+                } else {
                     calculatorEditText.setText(calculatorEditText.getText() + "1");
                 }
                 opEditText.setText("");
@@ -71,8 +72,7 @@ public class MainActivity extends AppCompatActivity {
                 if (check) {
                     calculatorEditText.setText("2");
                     check = false;
-                }
-                else {
+                } else {
                     calculatorEditText.setText(calculatorEditText.getText() + "2");
                 }
                 opEditText.setText("");
@@ -86,8 +86,7 @@ public class MainActivity extends AppCompatActivity {
                 if (check) {
                     calculatorEditText.setText("3");
                     check = false;
-                }
-                else {
+                } else {
                     calculatorEditText.setText(calculatorEditText.getText() + "3");
                 }
                 opEditText.setText("");
@@ -101,8 +100,7 @@ public class MainActivity extends AppCompatActivity {
                 if (check) {
                     calculatorEditText.setText("4");
                     check = false;
-                }
-                else {
+                } else {
                     calculatorEditText.setText(calculatorEditText.getText() + "4");
                 }
                 opEditText.setText("");
@@ -116,8 +114,7 @@ public class MainActivity extends AppCompatActivity {
                 if (check) {
                     calculatorEditText.setText("5");
                     check = false;
-                }
-                else {
+                } else {
                     calculatorEditText.setText(calculatorEditText.getText() + "5");
                 }
                 opEditText.setText("");
@@ -131,8 +128,7 @@ public class MainActivity extends AppCompatActivity {
                 if (check) {
                     calculatorEditText.setText("6");
                     check = false;
-                }
-                else {
+                } else {
                     calculatorEditText.setText(calculatorEditText.getText() + "6");
                 }
                 opEditText.setText("");
@@ -146,8 +142,7 @@ public class MainActivity extends AppCompatActivity {
                 if (check) {
                     calculatorEditText.setText("7");
                     check = false;
-                }
-                else {
+                } else {
                     calculatorEditText.setText(calculatorEditText.getText() + "7");
                 }
                 opEditText.setText("");
@@ -161,8 +156,7 @@ public class MainActivity extends AppCompatActivity {
                 if (check) {
                     calculatorEditText.setText("8");
                     check = false;
-                }
-                else {
+                } else {
                     calculatorEditText.setText(calculatorEditText.getText() + "8");
                 }
                 opEditText.setText("");
@@ -176,8 +170,7 @@ public class MainActivity extends AppCompatActivity {
                 if (check) {
                     calculatorEditText.setText("9");
                     check = false;
-                }
-                else {
+                } else {
                     calculatorEditText.setText(calculatorEditText.getText() + "9");
                 }
                 opEditText.setText("");
@@ -191,8 +184,7 @@ public class MainActivity extends AppCompatActivity {
                 if (check) {
                     calculatorEditText.setText("0");
                     check = false;
-                }
-                else {
+                } else {
                     calculatorEditText.setText(calculatorEditText.getText() + "0");
                 }
                 opEditText.setText("");
@@ -214,8 +206,7 @@ public class MainActivity extends AppCompatActivity {
                 if (check) {
                     calculatorEditText.setText("0.");
                     check = false;
-                }
-                else {
+                } else {
                     calculatorEditText.setText(calculatorEditText.getText() + ".");
                 }
                 opEditText.setText("");
@@ -227,8 +218,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (calculatorEditText.getText().toString().equals("")) {
                     calculatorEditText.setText("");
-                }
-                else {
+                } else {
                     FirstVal = Float.parseFloat(calculatorEditText.getText() + "");
                     calcAddition = true;
                     calculatorEditText.setText("");
@@ -243,8 +233,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (calculatorEditText.getText().toString().equals("")) {
                     calculatorEditText.setText("");
-                }
-                else {
+                } else {
                     FirstVal = Float.parseFloat(calculatorEditText.getText() + "");
                     calcMinus = true;
                     calculatorEditText.setText("");
@@ -258,8 +247,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (calculatorEditText.getText().toString().equals("")) {
                     calculatorEditText.setText("");
-                }
-                else {
+                } else {
                     FirstVal = Float.parseFloat(calculatorEditText.getText() + "");
                     calcMultiplication = true;
                     calculatorEditText.setText("");
@@ -271,10 +259,9 @@ public class MainActivity extends AppCompatActivity {
         buttonDivision.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(calculatorEditText.getText().toString().equals("")){
+                if (calculatorEditText.getText().toString().equals("")) {
                     calculatorEditText.setText("");
-                }
-                else {
+                } else {
                     FirstVal = Float.parseFloat(calculatorEditText.getText() + "");
                     calcDivision = true;
                     calculatorEditText.setText("");
@@ -288,8 +275,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (calculatorEditText.getText().toString().equals("")) {
                     calculatorEditText.setText("");
-                }
-                else {
+                } else {
                     FirstVal = Float.parseFloat(calculatorEditText.getText() + "");
                     calcPow = true;
                     calculatorEditText.setText("");
@@ -339,5 +325,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        buttonConverter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openSecondActivity();
+            }
+        });
+
+    }
+
+    private void openSecondActivity() {
+        Intent intent = new Intent(this, SecondaryActivity.class);
+        startActivity(intent);
     }
 }
