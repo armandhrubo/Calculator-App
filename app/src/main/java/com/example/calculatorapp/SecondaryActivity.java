@@ -65,7 +65,7 @@ public class SecondaryActivity extends AppCompatActivity {
                 else {
                     firstValue = Float.parseFloat(editText.getText() + "");
                     firstValue = firstValue * 1.60934;
-                    textView.setText(String.format("%.2f", firstValue) + " Kilometers");
+                    textView.setText(String.format("%.2f", firstValue) + " Kilometer");
 
                 }
                 editText.onEditorAction(EditorInfo.IME_ACTION_DONE);
