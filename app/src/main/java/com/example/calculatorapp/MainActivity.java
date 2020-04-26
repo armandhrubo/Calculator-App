@@ -8,9 +8,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.util.HashMap;
+
+import com.google.firebase.firestore.FieldValue;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -322,6 +327,19 @@ public class MainActivity extends AppCompatActivity {
                     calculatorEditText.setText(format.format(result) + "");
                     calcPow = false;
                 }
+                double storeTodB = SecondVal + result;
+                FirebaseFirestore db = FirebaseFirestore.getInstance();
+                HashMap<String, Object> accesslog = new HashMap<>();
+                accesslog.put("history: ", storeTodB);
+                accesslog.put("timestamp", FieldValue.serverTimestamp());
+                db.collection("logs").add(accesslog);
+                /*try {
+                    DatabaseActivity db = new DatabaseActivity(SecondVal, result);
+                    db.writeDB();
+                    Toast.makeText(MainActivity.this, "Stored in Database!", Toast.LENGTH_LONG).show();
+                } catch (Exception e) {
+                    Toast.makeText(MainActivity.this, "Failed to Store in Database!", Toast.LENGTH_LONG).show();
+                }*/
             }
         });
 
